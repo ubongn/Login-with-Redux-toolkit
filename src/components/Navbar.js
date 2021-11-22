@@ -38,10 +38,10 @@ function Navbar() {
               alignItems="center"
             >
             
-              <VisuallyHidden>Test</VisuallyHidden>
+              <VisuallyHidden>Redux</VisuallyHidden>
             </chakra.a>
             <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
-              Choc
+             Redux
             </chakra.h1>
           </Flex>
           <HStack display="flex" alignItems="center" spacing={1}>
