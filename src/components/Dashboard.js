@@ -1,19 +1,9 @@
-import { Box, Button, Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
 import React from "react";
-import { useDispatch } from "react-redux";
 
-import { logout } from "../redux/slices/userSlice";
 import Navbar from "./Navbar";
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
-
-  const handleLogout = (e) => {
-    e.preventDefault();
-
-    dispatch(logout());
-  };
-
   return (
     <>
       <Navbar />
@@ -26,16 +16,6 @@ const Dashboard = () => {
         <Box>
           <Text>Welcome to your Dashboard</Text>
         </Box>
-        <Button
-          bg={"blue.400"}
-          color={"white"}
-          _hover={{
-            bg: "blue.500",
-          }}
-          onClick={(e) => handleLogout(e)}
-        >
-          LOGOUT
-        </Button>
       </Flex>
     </>
   );

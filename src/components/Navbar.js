@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import {
   chakra,
@@ -15,10 +16,19 @@ import {
 } from "@chakra-ui/react";
 import { AiOutlineMenu } from "react-icons/ai";
 
+import { logout } from "../redux/slices/userSlice";
 
 function Navbar() {
   const bg = useColorModeValue("white", "gray.800");
   const mobileNav = useDisclosure();
+
+  const dispatch = useDispatch();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+
+    dispatch(logout());
+  };
 
   return (
     <>
@@ -33,15 +43,14 @@ function Navbar() {
           <Flex>
             <chakra.a
               href="/"
-              title="Choc Home Page"
+              title="Home Page"
               display="flex"
               alignItems="center"
             >
-            
               <VisuallyHidden>Redux</VisuallyHidden>
             </chakra.a>
             <chakra.h1 fontSize="xl" fontWeight="medium" ml="2">
-             Redux
+              Sabicode Academy
             </chakra.h1>
           </Flex>
           <HStack display="flex" alignItems="center" spacing={1}>
@@ -55,7 +64,9 @@ function Navbar() {
               <Button variant="ghost">Pricing</Button>
               <Button variant="ghost">Blog</Button>
               <Button variant="ghost">Company</Button>
-              <Button variant="ghost">Sign in</Button>
+              <Button variant="ghost" onClick={(e) => handleLogout(e)}>
+                Sign out
+              </Button>
             </HStack>
             <Button colorScheme="brand" size="sm">
               Get Started
@@ -103,8 +114,12 @@ function Navbar() {
                 <Button w="full" variant="ghost">
                   Company
                 </Button>
-                <Button w="full" variant="ghost">
-                  Sign in
+                <Button
+                  w="full"
+                  variant="ghost"
+                  onClick={(e) => handleLogout(e)}
+                >
+                  Sign out
                 </Button>
               </VStack>
             </Box>
